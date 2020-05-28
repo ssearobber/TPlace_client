@@ -5,7 +5,8 @@ import GlobalStyles from './styles/GlobalStyles';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 //커스터마이징 컴포넌트
-import GetPosts from './page/Post/GetPosts';
+import GetPosts from './page/post/GetPosts';
+import GetPostById from './page/post/GetPostById';
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
         <GlobalStyles />
         <Router>
           <Switch>
-            <Route path={'/'} exact component={GetPosts} />
+            <Route path={'/posts'} exact component={GetPosts} />
+            <Route path={'/post/:postId'} exact component={GetPostById} />
             <Redirect from={'*'} to={'/'} />
           </Switch>
         </Router>
