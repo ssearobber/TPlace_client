@@ -11,6 +11,7 @@ import Header from './components/organisms/Header';
 import GetPosts from './page/post/GetPosts';
 import GetPostById from './page/post/GetPostById';
 import SignIn from './page/auth/SignIn';
+import SignUp from './page/auth/SignUp';
 
 const App = () => {
   const {
@@ -30,6 +31,7 @@ const App = () => {
         <Router>
           <Header isLoggedIn={isLoggedIn} />
           <Switch>
+            <Route path={'/signUp'} component={SignUp} />
             <Route path={'/signIn'} component={SignIn} />
             <Route path={'/posts'} exact component={GetPosts} />
             <Route path={'/post/:postId'} exact component={GetPostById} />
