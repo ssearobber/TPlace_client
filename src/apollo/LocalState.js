@@ -1,21 +1,34 @@
 export const defaults = {
-  isLoggedIn: Boolean(localStorage.getItem('token')) || false,
+  auth: {
+    isLoggedIn: Boolean(localStorage.getItem('token')) || false,
+    __typename: 'Auth',
+  },
 };
 
 export const resolvers = {
   Mutation: {
-    logUserIn: (_, { token }, { cache }) => {
+    signInLocal: (_, { token }, { cache }) => {
       localStorage.setItem('token', token);
       cache.writeData({
         data: {
-          isLoggedIn: true,
+          auth: {
+            isLoggedIn: true,
+            __typename: 'Auth',
+          },
         },
       });
       return null;
     },
-    logUserOut: (_, __, { cache }) => {
+    logoutLocal: (_, __, { cache }) => {
       localStorage.removeItem('token');
-      window.location = '/';
+      cache.writeData({
+        data: {
+          auth: {
+            isLoggedIn: false,
+            __typename: 'Auth',
+          },
+        },
+      });
       return null;
     },
   },

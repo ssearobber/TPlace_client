@@ -3,7 +3,7 @@ import GetPostByIdPresenter from './GetPostByIdPresenter';
 import { GET_POSTS } from '../GetPosts/GetPostsQuery';
 import { GET_POST_BY_ID, DELETE_POST_BY_ID } from './GetPostByIdQuery';
 // import { GET_ME } from '../../../sharedQuery';
-import { useQuery, useMutation } from 'react-apollo-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { withRouter } from 'react-router-dom';
 
 const GetPostByIdContainer = ({

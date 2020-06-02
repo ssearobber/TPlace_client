@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import { withRouter } from 'react-router-dom';
 import { GET_POSTS } from './GetPostsQuery';
 import GetPostsPresenter from './GetPostsPresenter';
