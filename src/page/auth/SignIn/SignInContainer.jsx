@@ -23,7 +23,6 @@ const SignInContainer = ({ history }) => {
       else {
         toast.success('로그인 성공');
         const token = signIn.data;
-        console.log(token);
         signInLocalFn({
           variables: {
             token: token,

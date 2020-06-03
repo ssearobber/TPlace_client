@@ -7,11 +7,6 @@ export default new ApolloClient({
   fetchOptions: {
     credentials: 'include',
   },
-  onError: ({ networkError }) => {
-    if (networkError) {
-      console.log(`네트워크 에러입니다 : ${networkError}`);
-    }
-  },
   request: async (operation) => {
     const token = await localStorage.getItem('token');
     operation.setContext({
@@ -19,6 +14,14 @@ export default new ApolloClient({
         authorization: token ? token : '',
       },
     });
+  },
+  onError: ({ networkError, graphQLErrors }) => {
+    if (networkError) {
+      console.log(`네트워크 에러입니다 : ${networkError}`);
+    }
+    if (graphQLErrors) {
+      console.log(`graphQL 에러입니다 : ${graphQLErrors.map((error) => console.log(error))}`);
+    }
   },
 
   clientState: {

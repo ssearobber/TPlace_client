@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { GET_POSTS } from './GetPostsQuery';
 import GetPostsPresenter from './GetPostsPresenter';
 
-const GetPostsContainer = ({ history }) => {
+const GetPostsContainer = ({ history, isLoggedIn }) => {
   const { success: loading, error, data } = useQuery(GET_POSTS);
   let posts;
   if (loading) return <>loading...</>;
@@ -14,7 +14,7 @@ const GetPostsContainer = ({ history }) => {
     posts = data.getPosts.data;
   }
 
-  return <GetPostsPresenter posts={posts} history={history} />;
+  return <GetPostsPresenter posts={posts} history={history} isLoggedIn={isLoggedIn} />;
 };
 
 export default withRouter(GetPostsContainer);

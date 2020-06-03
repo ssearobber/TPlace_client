@@ -14,6 +14,27 @@ const Container = styled.div`
   padding: 0 16px;
 `;
 
+const ButtonBox = styled.div`
+  margin: 32px 0;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const WriteButton = styled.div`
+  cursor: pointer;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 16px 24px;
+  font-weight: 900;
+  box-shadow: 10px 10px 15px -9px rgba(0, 0, 0, 0.43);
+  background-color: #34495e;
+  color: #ffffff;
+  transition: all 0.2s ease;
+  &:hover {
+    background-color: #182223;
+  }
+`;
+
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -26,9 +47,20 @@ const GridContainer = styled.div`
   }
 `;
 
-const GetPostsPresenter = ({ posts, history }) => {
+const GetPostsPresenter = ({ posts, history, isLoggedIn }) => {
   return (
     <Container>
+      {isLoggedIn && (
+        <ButtonBox>
+          <WriteButton
+            onClick={() => {
+              history.push('/post/create');
+            }}
+          >
+            포스트작성
+          </WriteButton>
+        </ButtonBox>
+      )}
       <GridContainer>
         {posts && posts.map((post) => <PostItem key={post.id} history={history} {...post} />)}
       </GridContainer>
