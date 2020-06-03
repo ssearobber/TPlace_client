@@ -2,7 +2,7 @@ import React from 'react';
 import GetPostByIdPresenter from './GetPostByIdPresenter';
 import { GET_POSTS } from '../GetPosts/GetPostsQuery';
 import { GET_POST_BY_ID, DELETE_POST_BY_ID } from './GetPostByIdQuery';
-// import { GET_ME } from '../../../sharedQuery';
+import { GET_ME } from '../../../SharedQueries';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { withRouter } from 'react-router-dom';
 
@@ -18,8 +18,7 @@ const GetPostByIdContainer = ({
     },
   });
 
-  //   const { data: userData } = useQuery(GET_ME);
-  const userData = null; // 아직 getme를 작성하지 않음
+  const { data: userData } = useQuery(GET_ME);
 
   const [deletePostByIdFn] = useMutation(DELETE_POST_BY_ID, {
     onCompleted({ deletePostById }) {
@@ -48,7 +47,7 @@ const GetPostByIdContainer = ({
           postId: id,
         },
       });
-      history.push('/post');
+      history.push('/posts');
     }
   };
 
@@ -61,6 +60,7 @@ const GetPostByIdContainer = ({
   if (userData) {
     currentUser = userData.getMe.data;
   }
+  console.log(currentUser);
 
   return (
     <>

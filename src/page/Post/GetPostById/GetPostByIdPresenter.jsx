@@ -48,11 +48,11 @@ const Title = styled.div`
   font-size: 22px;
 `;
 
-// const Author = styled.div`
-//   font-weight: 600;
-//   font-size: 12px;
-//   margin: 2px 0;
-// `;
+const Author = styled.div`
+  font-weight: 600;
+  font-size: 12px;
+  margin: 2px 0;
+`;
 const Description = styled.div`
   font-weight: 600;
   font-size: 16px;
@@ -122,7 +122,7 @@ const GetPostByIdPresenter = ({
       <ImageBox imgUrl={imgUrl} />
       <DataBox>
         <Title>{title}</Title>
-        {/* <Author>{user && user.name}</Author> */}
+        <Author>{user && user.username}</Author>
         <Description>{description}</Description>
         {/** todo */}
         <CreatedAt>{createdAt}</CreatedAt>

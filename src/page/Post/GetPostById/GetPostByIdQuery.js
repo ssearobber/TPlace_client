@@ -10,11 +10,11 @@ export const GET_POST_BY_ID = gql`
         title
         description
         imgUrl
-        # user {
-        #   id
-        #   name
-        #   email
-        # }
+        user {
+          id
+          username
+          email
+        }
       }
     }
   }

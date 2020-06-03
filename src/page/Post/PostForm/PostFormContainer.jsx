@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CreatePostPresenter from './PostFormPresenter';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { CRETE_POST, UPDATE_POST_BY_ID } from './PostFormQuery';
 import { GET_POSTS } from '../GetPosts/GetPostsQuery';
 import { GET_POST_BY_ID } from '../GetPostById/GetPostByIdQuery';
@@ -14,25 +14,25 @@ const PostFormContainer = ({ history, match }) => {
     imgUrl: '',
   };
   const [formData, setFormData] = useState(initialState);
-  //   const { loading, error } = useQuery(GET_POST_BY_ID, {
-  //     skip: match.params.postId ? false : true,
-  //     variables: {
-  //       postId: match.params.postId,
-  //     },
-  //     onCompleted({ getPostById }) {
-  //       const { success, error, data } = getPostById;
-  //       if (error) {
-  //         toast.error(error.message);
-  //       } else if (success) {
-  //         setFormData({
-  //           ...formData,
-  //           title: data.title,
-  //           description: data.description,
-  //           imgUrl: data.imgUrl,
-  //         });
-  //       }
-  //     },
-  //   });
+  const { loading, error } = useQuery(GET_POST_BY_ID, {
+    skip: match.params.postId ? false : true,
+    variables: {
+      postId: match.params.postId,
+    },
+    onCompleted({ getPostById }) {
+      const { success, error, data } = getPostById;
+      if (error) {
+        toast.error(error.message);
+      } else if (success) {
+        setFormData({
+          ...formData,
+          title: data.title,
+          description: data.description,
+          imgUrl: data.imgUrl,
+        });
+      }
+    },
+  });
 
   const [createPostFn] = useMutation(CRETE_POST, {
     variables: {
