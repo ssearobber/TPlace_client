@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost';
 
 export const GET_POST_BY_ID = gql`
-  query GetPostById($postId: ID!) {
+  query getPostById($postId: ID!) {
     getPostById(postId: $postId) {
       success
       error
