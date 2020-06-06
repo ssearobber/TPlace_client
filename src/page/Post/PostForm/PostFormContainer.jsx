@@ -22,6 +22,7 @@ const PostFormContainer = ({ history, match }) => {
       postId: match.params.postId,
     },
   });
+  // 위의 useQuery의 skip이랑 onCompleted가 잘 작동하지 않아 임시적으로 useEffect로 작성
   useEffect(() => {
     if (data) {
       if (data.getPostById.data.error) {
