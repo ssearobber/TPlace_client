@@ -15,6 +15,7 @@ import SignIn from './page/auth/SignIn';
 import SignUp from './page/auth/SignUp';
 
 const App = () => {
+  console.log('원격 브랜치 test 하기2');
   const {
     data: {
       auth: { isLoggedIn },
