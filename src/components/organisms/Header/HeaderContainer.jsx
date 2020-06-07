@@ -47,18 +47,18 @@ const HeaderContainer = ({ isLoggedIn, history }) => {
       >
         {isLoggedIn ? (
           <>
-            <Link style={LinkStyle} to="/posts">
+            {/* <Link style={LinkStyle} to="/posts">
               POST
-            </Link>
-            <Link style={LinkStyle} to="!#" onClick={logoutLocalFn}>
+            </Link> */}
+            <Link style={LinkStyle} to="/posts" onClick={logoutLocalFn}>
               LOGOUT
             </Link>
           </>
         ) : (
           <>
-            <Link style={LinkStyle} to="/posts">
+            {/* <Link style={LinkStyle} to="/posts">
               POST
-            </Link>
+            </Link> */}
             <Link style={LinkStyle} to="/signIn">
               SIGN IN
             </Link>

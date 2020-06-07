@@ -19,11 +19,12 @@ const App = () => {
     data: {
       auth: { isLoggedIn },
     },
-    // loading,
-    // error,
+    loading,
+    error,
   } = useQuery(IS_LOGGED_IN);
 
-  console.log(isLoggedIn);
+  if (loading) return <div>loading..</div>;
+  if (error) return <div>error</div>;
 
   return (
     <>

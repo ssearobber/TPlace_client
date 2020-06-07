@@ -14,8 +14,6 @@ const PostFormContainer = ({ history, match }) => {
     imgUrl: '',
   };
   const [formData, setFormData] = useState(initialState);
-  console.log(match.params.postId);
-  console.log(match.params.postId ? false : true);
   const { loading, error, data } = useQuery(GET_POST_BY_ID, {
     skip: match.params.postId ? false : true,
     variables: {
@@ -26,9 +24,8 @@ const PostFormContainer = ({ history, match }) => {
   useEffect(() => {
     if (data) {
       if (data.getPostById.data.error) {
-        toast.error(error.message);
+        toast.error(data.getPostById.data.error.message);
       } else if (data.getPostById.success) {
-        console.log(data.getPostById.data.title);
         setFormData({
           ...formData,
           title: data.getPostById.data.title,
