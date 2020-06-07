@@ -8,14 +8,13 @@ import { IS_LOGGED_IN } from './SharedQueries.local';
 
 //커스터마이징 컴포넌트
 import Header from './components/organisms/Header';
-import GetPosts from './page/post/GetPosts';
-import GetPostById from './page/post/GetPostById';
-import PostForm from './page/post/PostForm';
+import GetPosts from './page/Post/GetPosts';
+import GetPostById from './page/Post/GetPostById';
+import PostForm from './page/Post/PostForm';
 import SignIn from './page/auth/SignIn';
 import SignUp from './page/auth/SignUp';
 
 const App = () => {
-  console.log('원격 브랜치 test 하기2');
   const {
     data: {
       auth: { isLoggedIn },
