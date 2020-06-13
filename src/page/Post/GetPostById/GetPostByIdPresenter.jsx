@@ -7,10 +7,10 @@ const Container = styled.div`
   box-sizing: border-box;
   padding: 0 16px;
   margin: 80px 0;
-  /* ${mediaQuery(2)} {
+  ${mediaQuery(2)} {
     width: 1000px;
     margin: 80px auto;
-  } */
+  }
 `;
 
 const ImageBox = styled.div`
@@ -129,7 +129,7 @@ const GetPostByIdPresenter = ({
       </DataBox>
       <ButtonBox>
         <DefaultButton onClick={handleGoBack}>뒤로가기</DefaultButton>
-        {currentUser.id === user.id && (
+        {currentUser && user && currentUser.id === user.id && (
           <>
             <UpdateButton onClick={() => handleUpdate(id)}>포스트수정</UpdateButton>
             <DeleteButton onClick={() => handleDelete(id)}>포스트삭제</DeleteButton>

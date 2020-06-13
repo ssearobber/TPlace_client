@@ -4,6 +4,16 @@ import { useMutation } from '@apollo/react-hooks';
 import { LOG_OUT_USER_LOCAL } from '../../../SharedQueries.local';
 import Logo from '../../../image/TPlace.png';
 import { toast } from 'react-toastify';
+import styled from 'styled-components';
+// import mediaQuery from '../../../styles/mediaQuery';
+
+const navHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 16px;
+`;
 
 const HeaderContainer = ({ isLoggedIn, history }) => {
   const [logoutLocalFn] = useMutation(LOG_OUT_USER_LOCAL, {
