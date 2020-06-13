@@ -60,7 +60,7 @@ const GetPostByIdContainer = ({
   if (userData) {
     currentUser = userData.getMe.data;
   }
-  console.log(currentUser);
+  console.log('currentUser : ' + currentUser);
 
   return (
     <>

@@ -8,6 +8,7 @@ import { IS_LOGGED_IN } from './SharedQueries.local';
 
 //커스터마이징 컴포넌트
 import Header from './components/organisms/Header';
+import Home from './page/Home';
 import GetPosts from './page/Post/GetPosts';
 import GetPostById from './page/Post/GetPostById';
 import PostForm from './page/Post/PostForm';
@@ -33,8 +34,9 @@ const App = () => {
         <Router>
           <Header isLoggedIn={isLoggedIn} />
           <Switch>
-            <Route path={'/signUp'} component={SignUp} />
-            <Route path={'/signIn'} component={SignIn} />
+            <Route path={'/'} exact component={Home} />
+            <Route path={'/signUp'} exact component={SignUp} />
+            <Route path={'/signIn'} exact component={SignIn} />
             <Route path={'/posts'} exact>
               <GetPosts isLoggedIn={isLoggedIn} />
             </Route>
