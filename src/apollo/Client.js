@@ -2,17 +2,17 @@ import ApolloClient from 'apollo-boost';
 import { defaults, resolvers } from './LocalState';
 
 export default new ApolloClient({
-  // uri: 'http://localhost:4000',
-  uri: 'https://tplace.herokuapp.com/',
+  uri: 'http://localhost:4000',
+  // uri: 'https://tplace.herokuapp.com/',
 
   fetchOptions: {
     credentials: 'include',
   },
   request: async (operation) => {
-    const token = await localStorage.getItem('token');
+    const TPToken = await localStorage.getItem('TPToken');
     operation.setContext({
       headers: {
-        authorization: token ? token : '',
+        authorization: TPToken ? TPToken : '',
       },
     });
   },

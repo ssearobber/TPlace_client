@@ -15,6 +15,15 @@ export const GET_POST_BY_ID = gql`
           username
           email
         }
+        postComments {
+          id
+          text
+          user {
+            id
+            username
+            email
+          }
+        }
       }
     }
   }
@@ -25,6 +34,23 @@ export const DELETE_POST_BY_ID = gql`
     deletePostById(postId: $postId) {
       success
       error
+    }
+  }
+`;
+
+export const CREATE_POST_COMMENT = gql`
+  mutation createPostComment($postId: ID!, $text: String!) {
+    createPostComment(postId: $postId, text: $text) {
+      success
+      error
+      data {
+        id
+        text
+        user {
+          id
+          username
+        }
+      }
     }
   }
 `;

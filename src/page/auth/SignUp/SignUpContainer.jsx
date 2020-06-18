@@ -22,10 +22,10 @@ const SignUpContainer = ({ history }) => {
       }
       // 회원가입 성공
       else {
-        const token = signUp.data;
+        const TPToken = signUp.data;
         signInLocalFn({
           variables: {
-            token: token,
+            TPToken: TPToken,
           },
         });
         toast.success('회원가입 성공');

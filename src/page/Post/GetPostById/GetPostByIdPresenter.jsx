@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import TextareaAutosize from 'react-autosize-textarea';
 import mediaQuery from '../../../styles/mediaQuery';
 
 const Container = styled.div`
@@ -105,6 +106,31 @@ const DeleteButton = styled(DefaultButton)`
   }
 `;
 
+const Comments = styled.ul`
+  margin-top: 10px;
+`;
+
+const Comment = styled.li`
+  margin-bottom: 7px;
+  span {
+    margin-right: 5px;
+  }
+`;
+
+const Textarea = styled(TextareaAutosize)`
+  border: none;
+  width: 100%;
+  resize: none;
+  font-size: 14px;
+  &:focus {
+    outline: none;
+  }
+`;
+
+const FatText = styled.span`
+  font-weight: 700;
+`;
+
 const GetPostByIdPresenter = ({
   handleGoBack,
   handleUpdate,
@@ -116,6 +142,9 @@ const GetPostByIdPresenter = ({
   user,
   createdAt,
   currentUser,
+  postComments,
+  newComment,
+  onKeyPress,
 }) => {
   return (
     <Container>
@@ -136,6 +165,22 @@ const GetPostByIdPresenter = ({
           </>
         )}
       </ButtonBox>
+      {postComments && (
+        <Comments>
+          {postComments.map((postComment) => (
+            <Comment key={postComment.id}>
+              <FatText>{postComment.user.username}</FatText>
+              {postComment.text}
+            </Comment>
+          ))}
+        </Comments>
+      )}
+      <Textarea
+        onKeyPress={onKeyPress}
+        placeholder={'Add a comment...'}
+        value={newComment.value}
+        onChange={newComment.onChange}
+      />
     </Container>
   );
 };
