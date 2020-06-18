@@ -93,7 +93,6 @@ const GetPostByIdContainer = ({
   if (userData) {
     currentUser = userData.getMe.data;
   }
-  console.log('Comment : ' + data.getPostById.data.postComments);
 
   return (
     <>
