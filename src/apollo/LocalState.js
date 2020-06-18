@@ -1,14 +1,14 @@
 export const defaults = {
   auth: {
-    isLoggedIn: Boolean(localStorage.getItem('token')) || false,
+    isLoggedIn: Boolean(localStorage.getItem('TPToken')) || false,
     __typename: 'Auth',
   },
 };
 
 export const resolvers = {
   Mutation: {
-    signInLocal: (_, { token }, { cache }) => {
-      localStorage.setItem('token', token);
+    signInLocal: (_, { TPToken }, { cache }) => {
+      localStorage.setItem('TPToken', TPToken);
       cache.writeData({
         data: {
           auth: {
@@ -20,7 +20,7 @@ export const resolvers = {
       return null;
     },
     logoutLocal: (_, __, { cache }) => {
-      localStorage.removeItem('token');
+      localStorage.removeItem('TPToken');
       cache.writeData({
         data: {
           auth: {

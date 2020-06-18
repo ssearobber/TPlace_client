@@ -1,10 +1,12 @@
 import React from 'react';
+import useInput from '../../../hooks/useInput';
 import GetPostByIdPresenter from './GetPostByIdPresenter';
 import { GET_POSTS } from '../GetPosts/GetPostsQuery';
-import { GET_POST_BY_ID, DELETE_POST_BY_ID } from './GetPostByIdQuery';
+import { GET_POST_BY_ID, DELETE_POST_BY_ID, CREATE_POST_COMMENT } from './GetPostByIdQuery';
 import { GET_ME } from '../../../SharedQueries';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { withRouter } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const GetPostByIdContainer = ({
   match: {
@@ -12,6 +14,8 @@ const GetPostByIdContainer = ({
   },
   history,
 }) => {
+  const comment = useInput('');
+
   const { data, loading, error } = useQuery(GET_POST_BY_ID, {
     variables: {
       postId,
@@ -30,6 +34,23 @@ const GetPostByIdContainer = ({
       }
     },
     refetchQueries: [{ query: GET_POSTS }],
+  });
+
+  const [createPostCommentFn] = useMutation(CREATE_POST_COMMENT, {
+    variables: {
+      postId: postId,
+      text: comment.value,
+    },
+    onCompleted({ createPostComment }) {
+      const { success, error, data } = createPostComment;
+      console.log(data);
+      if (error) {
+        alert(error.message);
+      } else if (success) {
+        comment.setValue('');
+      }
+    },
+    refetchQueries: [{ query: GET_POST_BY_ID, variables: { postId: postId } }],
   });
 
   const handleGoBack = () => {
@@ -51,6 +72,18 @@ const GetPostByIdContainer = ({
     }
   };
 
+  const onKeyPress = async (event) => {
+    const { which } = event;
+    if (which === 13) {
+      event.preventDefault();
+      try {
+        createPostCommentFn();
+      } catch {
+        toast.error('Cant send comment');
+      }
+    }
+  };
+
   if (error) return <></>;
   if (loading) return <></>;
 
@@ -60,7 +93,7 @@ const GetPostByIdContainer = ({
   if (userData) {
     currentUser = userData.getMe.data;
   }
-  console.log('currentUser : ' + currentUser);
+  console.log('Comment : ' + data.getPostById.data.postComments);
 
   return (
     <>
@@ -69,6 +102,8 @@ const GetPostByIdContainer = ({
         handleUpdate={handleUpdate}
         handleDelete={handleDelete}
         currentUser={currentUser}
+        newComment={comment}
+        onKeyPress={onKeyPress}
         {...post}
       />
     </>

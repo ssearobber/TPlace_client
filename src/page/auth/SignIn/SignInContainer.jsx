@@ -22,10 +22,10 @@ const SignInContainer = ({ history }) => {
       // 로그인 성공
       else {
         toast.success('로그인 성공');
-        const token = signIn.data;
+        const TPToken = signIn.data;
         signInLocalFn({
           variables: {
-            token: token,
+            TPToken: TPToken,
           },
         });
         history.push('/posts');

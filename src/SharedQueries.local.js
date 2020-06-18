@@ -9,8 +9,8 @@ export const IS_LOGGED_IN = gql`
 `;
 
 export const SIGN_IN_USER_LOCAL = gql`
-  mutation signInLocal($token: String!) {
-    signInLocal(token: $token) @client
+  mutation signInLocal($TPToken: String!) {
+    signInLocal(TPToken: $TPToken) @client
   }
 `;
 

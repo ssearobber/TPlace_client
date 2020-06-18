@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 
-export const CRETE_POST = gql`
+export const CREATE_POST = gql`
   mutation($title: String!, $description: String!, $imgUrl: String) {
     createPost(input: { title: $title, description: $description, imgUrl: $imgUrl }) {
       success

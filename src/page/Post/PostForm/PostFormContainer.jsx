@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CreatePostPresenter from './PostFormPresenter';
 import { useMutation, useQuery } from '@apollo/react-hooks';
-import { CRETE_POST, UPDATE_POST_BY_ID } from './PostFormQuery';
+import { CREATE_POST, UPDATE_POST_BY_ID } from './PostFormQuery';
 import { GET_POSTS } from '../GetPosts/GetPostsQuery';
 import { GET_POST_BY_ID } from '../GetPostById/GetPostByIdQuery';
 import { withRouter } from 'react-router-dom';
@@ -36,7 +36,7 @@ const PostFormContainer = ({ history, match }) => {
     }
   }, []);
 
-  const [createPostFn] = useMutation(CRETE_POST, {
+  const [createPostFn] = useMutation(CREATE_POST, {
     variables: {
       title: formData.title,
       description: formData.description,
