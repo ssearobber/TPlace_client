@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import mediaQuery from '../../../../styles/mediaQuery';
 
 const Container = styled.div`
   width: 100%;
@@ -21,13 +20,6 @@ const Container = styled.div`
   cursor: pointer;
   &:hover {
     transform: scale(1.03);
-  }
-  &:first-of-type {
-    ${mediaQuery(2)} {
-      grid-column: 1 / -1;
-      background-size: fill;
-      height: 600px;
-    }
   }
 `;
 
