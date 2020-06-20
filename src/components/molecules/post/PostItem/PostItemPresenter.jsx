@@ -2,25 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  box-sizing: border-box;
+  padding-bottom: 32px;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    > img {
+      opacity: 0.4;
+    }
+  }
+`;
+
+const Image = styled.img`
   width: 100%;
   height: 300px;
   background-image: url(${(props) => props.imgUrl && props.imgUrl});
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  padding-bottom: 32px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 10px 10px 15px -9px rgba(0, 0, 0, 0.43);
-  transition: all 0.2s ease;
-  position: relative;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.03);
-  }
 `;
 
 const DataBox = styled.div`
@@ -58,12 +62,13 @@ const CreatedAt = styled.div`
 
 const PostItem = ({ history, id, title, description, imgUrl, createdAt }) => {
   return (
-    <Container imgUrl={imgUrl} onClick={() => history.push(`/post/${id}`)}>
-      <DataBox>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
-        <CreatedAt>{createdAt}</CreatedAt>
-      </DataBox>
+    <Container onClick={() => history.push(`/post/${id}`)}>
+      {/* <DataBox> */}
+      <Image src={imgUrl} alt="imgUrl" />
+      <Title>{title}</Title>
+      <Description>{description}</Description>
+      <CreatedAt>{createdAt}</CreatedAt>
+      {/* </DataBox> */}
     </Container>
   );
 };
