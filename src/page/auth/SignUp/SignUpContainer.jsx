@@ -4,6 +4,7 @@ import { SIGN_UP_USER } from './SignUpQuery';
 import { SIGN_IN_USER_LOCAL } from '../../../SharedQueries.local';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import SignUpPresenter from './SignUpPresenter';
 
 const SignUpContainer = ({ history }) => {
   const initialState = {
@@ -65,64 +66,8 @@ const SignUpContainer = ({ history }) => {
   };
 
   return (
-    <div>
-      <h1 style={{ textAlign: 'center' }}>회원가입</h1>
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          width: '100%',
-          boxSizing: 'border-box',
-          padding: '40px 60px',
-        }}
-      >
-        <input
-          onChange={handleChange}
-          type="text"
-          style={inputStyle}
-          value={username}
-          name={'username'}
-          placeholder={'NAME'}
-        />
-        <input
-          onChange={handleChange}
-          type="text"
-          style={inputStyle}
-          value={email}
-          name={'email'}
-          placeholder={'EMAIL'}
-        />
-        <input
-          onChange={handleChange}
-          type="password"
-          style={inputStyle}
-          value={password}
-          name={'password'}
-          placeholder={'PASSWORD'}
-        />
-        <button style={buttonStyle}>회원가입</button>
-      </form>
-    </div>
+    <SignUpPresenter handleSubmit={handleSubmit} handleChange={handleChange} formData={formData} />
   );
-};
-
-const inputStyle = {
-  width: '100%',
-  marginBottom: '10px',
-  height: '30px',
-  padding: '32px',
-  fontSize: '14px',
-  fontWeight: '900',
-  boxSizing: 'border-box',
-};
-
-const buttonStyle = {
-  width: '100%',
-  boxSizing: 'border-box',
-  padding: '20px',
-  backgroundColor: 'black',
-  color: 'white',
-  fontSize: '16px',
-  fontWeight: '900',
 };
 
 export default withRouter(SignUpContainer);
