@@ -67,7 +67,7 @@ const SignUpPresenter = ({ handleSubmit, handleChange, formData }) => {
           name={'password'}
           placeholder={'PASSWORD'}
         />
-        <Button>회원가입</Button>
+        <Button>SIGN UP</Button>
       </Form>
     </SignInWrapper>
   );

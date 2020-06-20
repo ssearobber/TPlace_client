@@ -60,7 +60,7 @@ const SignInPresenter = ({ handleSubmit, handleChange, formData }) => {
           name={'password'}
           placeholder={'PASSWORD'}
         />
-        <Button type={'submit'}>로그인</Button>
+        <Button type={'submit'}>SIGN IN</Button>
       </Form>
     </SignInWrapper>
   );
