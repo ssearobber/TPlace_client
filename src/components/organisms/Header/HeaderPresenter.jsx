@@ -42,13 +42,13 @@ const ItemLink = styled(Link)`
 const HeaderPresenter = ({ isLoggedIn, history, logoutLocalFn }) => {
   return (
     <NavHeader>
-      <LogoWrapper onClick={() => history.push('/posts')}>
+      <LogoWrapper onClick={() => history.push('/home')}>
         <Logo src={LogoImg} alt="logo" />
       </LogoWrapper>
       <ItemWrapper>
         {isLoggedIn ? (
           <>
-            <ItemLink to="/posts" onClick={logoutLocalFn}>
+            <ItemLink to="/home" onClick={logoutLocalFn}>
               LOGOUT
             </ItemLink>
           </>
