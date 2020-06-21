@@ -8,7 +8,6 @@ const Container = styled.div`
   box-sizing: border-box;
   padding-bottom: 32px;
   border-radius: 5px;
-  overflow: hidden;
   transition: all 0.2s ease;
   position: relative;
   cursor: pointer;
@@ -25,6 +24,7 @@ const Image = styled.img`
   background-image: url(${(props) => props.imgUrl && props.imgUrl});
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 `;
 
 const DataBox = styled.div`

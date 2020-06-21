@@ -16,7 +16,7 @@ const Container = styled.div`
 
 const ImageBox = styled.div`
   width: 100%;
-  height: 320px;
+  height: 640px;
   background-image: url(${(props) => props.imgUrl && props.imgUrl});
   background-repeat: no-repeat;
   background-size: cover;

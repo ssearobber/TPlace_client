@@ -1,8 +1,9 @@
 import React from 'react';
+import withRouter from 'react-router-dom';
 import HomePresenter from './HomePresenter';
 
-const HomeContainer = () => {
-  return <HomePresenter />;
+const HomeContainer = ({ history }) => {
+  return <HomePresenter history={history} />;
 };
 
-export default HomeContainer;
+export default withRouter(HomeContainer);
