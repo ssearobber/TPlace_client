@@ -20,7 +20,6 @@ const Container = styled.div`
 `;
 
 const Item1 = styled.div`
-  background-color: red;
   grid-column: 1 / 3;
   grid-row: 1 / 5;
   position: relative;
