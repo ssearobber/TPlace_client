@@ -24,6 +24,7 @@ const Container = styled.div`
 `;
 
 const HomeItem = styled.div`
+  height: 300px;
   position: relative;
   cursor: pointer;
   > img {
@@ -42,22 +43,22 @@ const HomeItem = styled.div`
 `;
 
 const Item1 = styled(HomeItem)`
-  height: 300px;
   ${mediaQuery(2)} {
+    height: 100%;
     grid-column: 1 / 3;
     grid-row: 1 / 5;
   }
 `;
 const Item2 = styled(HomeItem)`
-  height: 300px;
   ${mediaQuery(2)} {
+    height: 100%;
     grid-column: 3 / 5;
     grid-row: 1 / 3;
   }
 `;
 const Item3 = styled(HomeItem)`
-  height: 300px;
   ${mediaQuery(2)} {
+    height: 100%;
     grid-column: 3 / 5;
     grid-row: 3 / 5;
   }
@@ -82,15 +83,15 @@ const Item4 = styled.div`
   }
 `;
 const Item5 = styled(HomeItem)`
-  height: 300px;
   ${mediaQuery(2)} {
+    height: 100%;
     grid-column: 1 / 3;
     grid-row: 6 / 10;
   }
 `;
 const Item6 = styled(HomeItem)`
-  height: 300px;
   ${mediaQuery(2)} {
+    height: 100%;
     grid-column: 3 / 5;
     grid-row: 6 / 9;
   }
