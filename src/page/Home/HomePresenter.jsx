@@ -8,10 +8,14 @@ import Hangang from '../../image/Hangang.jpg';
 import Gangnam from '../../image/Gangnam.jpeg';
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(9, 1fr);
+  width: 100%;
+  margin: 80px 0;
+  display: flex;
+  flex-direction: column;
   ${mediaQuery(2)} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(9, 1fr);
     width: 1000px;
     height: 800px;
     margin: 80px auto;
@@ -19,9 +23,7 @@ const Container = styled.div`
   }
 `;
 
-const Item1 = styled.div`
-  grid-column: 1 / 3;
-  grid-row: 1 / 5;
+const HomeItem = styled.div`
   position: relative;
   cursor: pointer;
   > img {
@@ -38,92 +40,63 @@ const Item1 = styled.div`
     font-weight: 900;
   }
 `;
-const Item2 = styled.div`
-  grid-column: 3 / 5;
-  grid-row: 1 / 3;
-  position: relative;
-  cursor: pointer;
-  > img {
-    width: 100%;
-    height: 100%;
-  }
-  > p {
-    position: absolute;
-    left: 80%;
-    top: 10%;
-    color: black;
-    font-size: 24px;
-    font-weight: 900;
+
+const Item1 = styled(HomeItem)`
+  height: 300px;
+  ${mediaQuery(2)} {
+    grid-column: 1 / 3;
+    grid-row: 1 / 5;
   }
 `;
-const Item3 = styled.div`
-  grid-column: 3 / 5;
-  grid-row: 3 / 5;
-  position: relative;
-  cursor: pointer;
-  > img {
-    width: 100%;
-    height: 100%;
+const Item2 = styled(HomeItem)`
+  height: 300px;
+  ${mediaQuery(2)} {
+    grid-column: 3 / 5;
+    grid-row: 1 / 3;
   }
-  > p {
-    position: absolute;
-    left: 80%;
-    top: 10%;
-    color: white;
-    font-size: 24px;
-    font-weight: 900;
+`;
+const Item3 = styled(HomeItem)`
+  height: 300px;
+  ${mediaQuery(2)} {
+    grid-column: 3 / 5;
+    grid-row: 3 / 5;
   }
 `;
 const Item4 = styled.div`
-  grid-column: 1 / 5;
-  grid-row: 5 / 6;
   border: 8px solid green;
   margin: 8px 64px;
   padding: 8px;
   > p {
     text-align: center;
   }
-`;
-const Item5 = styled.div`
-  grid-column: 1 / 3;
-  grid-row: 6 / 10;
-  position: relative;
-  cursor: pointer;
-  > img {
-    width: 100%;
-    height: 100%;
-  }
-  > p {
-    position: absolute;
-    left: 80%;
-    top: 10%;
-    color: white;
-    font-size: 24px;
-    font-weight: 900;
+
+  ${mediaQuery(2)} {
+    grid-column: 1 / 5;
+    grid-row: 5 / 6;
+    border: 8px solid green;
+    margin: 8px 64px;
+    padding: 8px;
+    > p {
+      text-align: center;
+    }
   }
 `;
-const Item6 = styled.div`
-  grid-column: 3 / 5;
-  grid-row: 6 / 9;
-  position: relative;
-  cursor: pointer;
-  > img {
-    width: 100%;
-    height: 100%;
+const Item5 = styled(HomeItem)`
+  height: 300px;
+  ${mediaQuery(2)} {
+    grid-column: 1 / 3;
+    grid-row: 6 / 10;
   }
-  > p {
-    position: absolute;
-    left: 80%;
-    top: 10%;
-    color: white;
-    font-size: 24px;
-    font-weight: 900;
+`;
+const Item6 = styled(HomeItem)`
+  height: 300px;
+  ${mediaQuery(2)} {
+    grid-column: 3 / 5;
+    grid-row: 6 / 9;
   }
 `;
 const Item7 = styled.div`
-  grid-column: 3 / 5;
-  grid-row: 9 / 10;
-  padding: 32px 0;
+  text-align: center;
   > span {
     &:first-child {
       color: red;
@@ -132,6 +105,21 @@ const Item7 = styled.div`
     }
     &:last-child {
       font-size: 24px;
+    }
+  }
+  ${mediaQuery(2)} {
+    grid-column: 3 / 5;
+    grid-row: 9 / 10;
+    padding: 32px 0;
+    > span {
+      &:first-child {
+        color: red;
+        font-size: 32px;
+        font-weight: 900;
+      }
+      &:last-child {
+        font-size: 24px;
+      }
     }
   }
 `;

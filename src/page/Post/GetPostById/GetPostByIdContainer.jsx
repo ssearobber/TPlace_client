@@ -84,8 +84,8 @@ const GetPostByIdContainer = ({
     }
   };
 
-  if (error) return <></>;
-  if (loading) return <></>;
+  if (error) return <>error</>;
+  if (loading) return <>loading...</>;
 
   const post = data.getPostById.data;
 

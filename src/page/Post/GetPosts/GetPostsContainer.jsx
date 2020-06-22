@@ -5,7 +5,7 @@ import { GET_POSTS } from './GetPostsQuery';
 import GetPostsPresenter from './GetPostsPresenter';
 
 const GetPostsContainer = ({ history, isLoggedIn }) => {
-  const { success: loading, error, data } = useQuery(GET_POSTS);
+  const { loading, error, data } = useQuery(GET_POSTS);
   let posts;
   if (loading) return <>loading...</>;
   if (error) return <>error</>;
