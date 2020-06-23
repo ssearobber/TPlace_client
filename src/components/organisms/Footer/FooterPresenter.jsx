@@ -19,6 +19,7 @@ const Footer = styled.footer`
   font-weight: 600;
   font-size: 12px;
   margin: 50px 0px;
+  padding: 0 16px;
   overflow: hidden;
 `;
 
@@ -51,7 +52,7 @@ const FooterPresenter = () => {
           <ListItem>
             <Link href="#">support</Link>
           </ListItem>
-          <ListItem>
+          {/* <ListItem>
             <Link href="#">press</Link>
           </ListItem>
           <ListItem>
@@ -77,7 +78,7 @@ const FooterPresenter = () => {
           </ListItem>
           <ListItem>
             <Link href="#">language</Link>
-          </ListItem>
+          </ListItem> */}
         </List>
         <Copyright>TPlace {new Date().getFullYear()} &copy;</Copyright>
       </Footer>
