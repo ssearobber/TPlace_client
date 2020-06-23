@@ -98,6 +98,7 @@ const Item6 = styled(HomeItem)`
 `;
 const Item7 = styled.div`
   text-align: center;
+  padding: 16px 0;
   > span {
     &:first-child {
       color: red;

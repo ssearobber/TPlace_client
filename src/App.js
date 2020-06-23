@@ -8,6 +8,7 @@ import { IS_LOGGED_IN } from './SharedQueries.local';
 
 //커스터마이징 컴포넌트
 import Header from './components/organisms/Header';
+import Footer from './components/organisms/Footer';
 import Home from './page/Home';
 import GetPosts from './page/Post/GetPosts';
 import GetPostById from './page/Post/GetPostById';
@@ -45,6 +46,7 @@ const App = () => {
             <Route path={'/post/:postId/update'} exact component={PostForm} />
             <Redirect from={'*'} to={'/'} />
           </Switch>
+          <Footer />
         </Router>
       </ThemeProvider>
     </>
