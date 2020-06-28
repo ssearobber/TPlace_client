@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import mediaQuery from '../../../styles/mediaQuery';
+import ImageUpload from '../../../components/molecules/post/ImageUpload';
 
 const Container = styled.div`
   width: 100%;
@@ -83,6 +84,7 @@ const PostFormPresenter = ({
   handleGoBack,
   formData: { title, description, imgUrl },
   isUpdate,
+  onDrop,
 }) => {
   return (
     <Container>
@@ -100,15 +102,16 @@ const PostFormPresenter = ({
           onChange={handleChange}
           placeholder={'DESCRIPTION'}
         />
-        <Input
+        {/* <Input
           type="text"
           value={imgUrl}
           name={'imgUrl'}
           onChange={handleChange}
           placeholder={'IMAGE URL'}
-        />
+        /> */}
+        {isUpdate ? null : <ImageUpload onDrop={onDrop} />}
         <ButtonBox>
-          <DefaultButton onClick={handleGoBack}>뒤로가기</DefaultButton>
+          <DefaultButton onClick={handleGoBack}>BACK</DefaultButton>
           <WriteButton type="submit">{isUpdate ? 'UPDATE' : 'WRITE'}</WriteButton>
         </ButtonBox>
       </Form>

@@ -57,7 +57,7 @@ const GetPostsPresenter = ({ posts, history, isLoggedIn }) => {
               history.push('/post/create');
             }}
           >
-            포스트작성
+            CREATE
           </WriteButton>
         </ButtonBox>
       )}

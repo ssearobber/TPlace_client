@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import CreatePostPresenter from './PostFormPresenter';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { CREATE_POST, UPDATE_POST_BY_ID } from './PostFormQuery';
@@ -14,6 +15,8 @@ const PostFormContainer = ({ history, match }) => {
     imgUrl: '',
   };
   const [formData, setFormData] = useState(initialState);
+  const [formImage, setFormImage] = useState('');
+
   const { loading, error, data } = useQuery(GET_POST_BY_ID, {
     skip: match.params.postId ? false : true,
     variables: {
@@ -83,8 +86,30 @@ const PostFormContainer = ({ history, match }) => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const onDrop = async (image) => {
+    setFormImage(image);
+  };
+  console.log(formImage[0]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const formDataImg = new FormData();
+    formDataImg.append('file', formImage[0]);
+
+    // http://localhost:4000/api/upload
+    try {
+      const {
+        data: { location },
+      } = await axios.post('https://tplace.herokuapp.com/api/upload', formDataImg, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      console.log(location);
+      setFormData({ ...formData, imgUrl: location });
+    } catch (e) {
+      alert(e);
+    }
+
     if (match.params.postId) {
       updatePostByIdFn();
     } else {
@@ -114,6 +139,7 @@ const PostFormContainer = ({ history, match }) => {
         handleGoBack={handleGoBack}
         formData={formData}
         isUpdate={match.params.postId}
+        onDrop={onDrop}
       />
     </div>
   );
