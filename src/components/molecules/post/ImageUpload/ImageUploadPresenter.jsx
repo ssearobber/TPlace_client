@@ -33,7 +33,7 @@ const ImageUploadPresenter = ({ onDrop }) => {
         buttonText="Upload Images"
         onChange={onDrop}
         imgExtension={['.jpg', '.gif', '.png', '.gif', '.svg', 'jpeg']}
-        maxFileSize={1048576}
+        maxFileSize={2621440}
         fileSizeError=" file size is too big"
       />
     </div>
