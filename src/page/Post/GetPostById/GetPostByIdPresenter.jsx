@@ -146,6 +146,7 @@ const GetPostByIdPresenter = ({
   postComments,
   newComment,
   onKeyPress,
+  isLoggedIn,
 }) => {
   return (
     <Container>
@@ -159,7 +160,7 @@ const GetPostByIdPresenter = ({
       </DataBox>
       <ButtonBox>
         <DefaultButton onClick={handleGoBack}>뒤로가기</DefaultButton>
-        {currentUser && user && currentUser.id === user.id && (
+        {isLoggedIn && currentUser && user && currentUser.id === user.id && (
           <>
             <UpdateButton onClick={() => handleUpdate(id)}>포스트수정</UpdateButton>
             <DeleteButton onClick={() => handleDelete(id)}>포스트삭제</DeleteButton>

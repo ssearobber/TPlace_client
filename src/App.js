@@ -43,6 +43,9 @@ const App = () => {
             </Route>
             <Route path={'/post/create'} exact component={PostForm} />
             <Route path={'/post/:postId'} exact component={GetPostById} />
+            <Route path={'/post/:postId'} exact>
+              <GetPostById isLoggedIn={isLoggedIn} />
+            </Route>
             <Route path={'/post/:postId/update'} exact component={PostForm} />
             <Redirect from={'*'} to={'/'} />
           </Switch>

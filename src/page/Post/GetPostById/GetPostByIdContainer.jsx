@@ -13,6 +13,7 @@ const GetPostByIdContainer = ({
     params: { postId },
   },
   history,
+  isLoggedIn,
 }) => {
   const comment = useInput('');
 
@@ -104,6 +105,7 @@ const GetPostByIdContainer = ({
         newComment={comment}
         onKeyPress={onKeyPress}
         {...post}
+        isLoggedIn={isLoggedIn}
       />
     </>
   );
