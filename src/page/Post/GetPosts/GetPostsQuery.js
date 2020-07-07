@@ -9,6 +9,7 @@ export const GET_POSTS = gql`
         id
         title
         description
+        view
         imgUrl
         createdAt
         updatedAt

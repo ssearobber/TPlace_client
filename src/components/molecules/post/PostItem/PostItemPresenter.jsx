@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Views } from '../../../../styles/Icons';
 
 const Container = styled.div`
   display: flex;
@@ -61,7 +62,13 @@ const CreatedAt = styled.div`
   margin: 2px 0;
 `;
 
-const PostItem = ({ history, id, title, description, imgUrl, createdAt }) => {
+const ViewWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const PostItem = ({ history, id, title, description, view, imgUrl, createdAt }) => {
   return (
     <Container onClick={() => history.push(`/post/${id}`)}>
       {/* <DataBox> */}
@@ -69,6 +76,11 @@ const PostItem = ({ history, id, title, description, imgUrl, createdAt }) => {
       <Title>{title}</Title>
       <Description>{description}</Description>
       <CreatedAt>{createdAt}</CreatedAt>
+      <ViewWrapper>
+        <div>{view}</div>
+        <Views />
+      </ViewWrapper>
+
       {/* </DataBox> */}
     </Container>
   );
